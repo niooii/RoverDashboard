@@ -42,8 +42,7 @@ void main() async {
   };
   // Logs async errors to the logs page
   runZonedGuarded(
-    // () => runApp(RoverControlDashboard()),
-    () => runApp(LidarPlot()),
+    () => runApp(RoverControlDashboard()),
     (error, stackTrace) async {
       if (error is SocketException && networkErrors.contains(error.osError!.errorCode)) {
         models.home.setMessage(severity: Severity.critical, text: "Network error, restart by clicking the network icon");
