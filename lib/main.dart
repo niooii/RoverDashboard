@@ -15,6 +15,7 @@ import "package:flutter/material.dart";
 
 import "package:rover_dashboard/app.dart";
 import "package:rover_dashboard/data.dart";
+import "package:rover_dashboard/lidar_temp_thing.dart";
 import "package:rover_dashboard/models.dart";
 
 /// Network errors that can be fixed by a simple reset.
@@ -41,7 +42,8 @@ void main() async {
   };
   // Logs async errors to the logs page
   runZonedGuarded(
-    () => runApp(RoverControlDashboard()),
+    // () => runApp(RoverControlDashboard()),
+    () => runApp(LidarPlot()),
     (error, stackTrace) async {
       if (error is SocketException && networkErrors.contains(error.osError!.errorCode)) {
         models.home.setMessage(severity: Severity.critical, text: "Network error, restart by clicking the network icon");
